@@ -9,6 +9,6 @@ llm = HuggingFaceEndpoint(
 
 model = ChatHuggingFace(llm = llm)
 
-res = model.invoke("Hello!")
+res = model.invoke("Give me the summary of paper 'Attention is All You Need'.")
 
 print(res.content)
