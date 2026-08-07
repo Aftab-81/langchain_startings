@@ -5,6 +5,7 @@ langchain-openai
 openai
 
 langchain-anthropic
+langchain-groq
 
 langchain-google-genai
 google-generativeai
