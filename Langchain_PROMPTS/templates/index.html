@@ -1,25 +1,77 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Research Tool</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Research Tool</title>
+    </head>
+    <body>
 
-    <h2>Research Tool for Beginners</h2>
+        <h2>Research Tool for Beginners</h2>
 
-    <form method="POST">
-        <textarea name="prompt" rows="6" cols="60"></textarea><br><br>
+        <form method="POST">
+            
+            <label for="paper_input">Select Research Paper:</label>
+        <select name="paper_input" id="paper_input">
+            <option value="Attention Is All You Need">
+                Attention Is All You Need
+            </option>
 
-        <button type="submit">
-            Generate Summary
-        </button>
-    </form>
+            <option value="BERT: Pre-training of Deep Bidirectional Transformers">
+                BERT: Pre-training of Deep Bidirectional Transformers
+            </option>
 
-    <br>
+            <option value="Generative Adversarial Networks">
+                Generative Adversarial Networks
+            </option>
 
-    <h3>Response</h3>
+            <option value="ImageNet Classification with Deep Convolutional Neural Networks">
+                ImageNet Classification with Deep Convolutional Neural Networks
+            </option>
+        </select>
 
-    <p>{{ response }}</p>
+        <br><br>
 
-</body>
-</html>
+        <!-- Explanation Style -->
+        <label for="style_input">Explanation Style:</label>
+        <select name="style_input" id="style_input">
+            <option value="beginner-friendly">
+                Beginner Friendly
+            </option>
+
+            <option value="technical">
+                Technical
+            </option>
+
+            <option value="math">
+                Math
+            </option>
+
+            <option value="code">
+                Code
+            </option>
+        </select>
+
+        <br><br>
+
+        <!-- Explanation Length -->
+        <label for="length_input">Explanation Length:</label>
+        <select name="length_input" id="length_input">
+            <option value="LOW">LOW</option>
+            <option value="MEDIUM" selected>MEDIUM</option>
+            <option value="HIGH">HIGH</option>
+        </select>
+
+        <br><br>
+
+            <button type="submit">
+                Generate Summary
+            </button>
+        </form>
+
+        <br>
+
+        <h3>Response</h3>
+
+        <p>{{ response }}</p>
+
+    </body>
+    </html>
