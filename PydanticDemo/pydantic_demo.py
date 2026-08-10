@@ -6,6 +6,8 @@ load_dotenv()
 """
     Here the code is not working reason is, we used HF model, instead use OpenAI model
     for structured output. The model we are using is not trained for structured output.
+    But the code is correct and it will work with OpenAI model. 
+    The code is just for demonstration purpose.
 """
 
 class Student(BaseModel):
