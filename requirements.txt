@@ -14,6 +14,8 @@ langchain-huggingface
 transformers
 huggingface-hub
 
+pydantic
+
 python-dotenv
 
 numpy
