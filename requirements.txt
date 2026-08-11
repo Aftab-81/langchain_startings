@@ -15,6 +15,7 @@ transformers
 huggingface-hub
 
 pydantic
+pydantic[email]
 
 python-dotenv
 
