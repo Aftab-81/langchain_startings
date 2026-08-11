@@ -24,7 +24,7 @@ json_schema = {
     "properties": {
         "key_themes": {
             "type": "array",
-            "items":{
+            "items": {
                 "type": "string"
             },
             "description": "Mention all the key themes discussed in the review"
