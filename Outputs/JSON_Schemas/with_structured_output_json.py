@@ -16,16 +16,54 @@ llm = HuggingFaceEndpoint(
 
 model = ChatHuggingFace(llm=llm)
 
-class Review(BaseModel):
-    key_themes: list[str] = Field(description = "Mention all the key themes discussed in the review")
-    # Annotated adds additional metadata/instructions to the field.
-    # The first argument (str) defines the data type.
-    # The second argument describes what the LLM should generate for this field.
-    summary: str = Field(description = "Give the brief summary of the review")
-    sentiment: Literal["pos", "neg", "neu"] = Field(description = "Classify the sentiment of the review either")
-    pros: Optional[list[str]] = Field(description = "List down all the pros mentioned in the review. If None, return None")
-    cons: Optional[list[str]] = Field(description = "List down all the cons mentioned in the review. If None, return None")
-    name: Optional[str] = Field(description = "Write the name of the reviewer if mentioned in the review")
+# schema
+
+json_schema = {
+    "title": "Review",
+    "type": "object",
+    "properties": {
+        "key_themes": {
+            "type": "array",
+            "items":{
+                "type": "string"
+            },
+            "description": "Mention all the key themes discussed in the review"
+        },
+
+        "summary": {
+            "type": "string",
+            "description": "Give the brief summary of the review"
+        },
+
+        "sentiment": {
+            "type": "string",
+            "enum": ["pos", "neg", "neu"],
+            "description": "Classify the sentiment of the review either Positive, Negative or Neutral"
+        },
+
+        "pros": {
+            "type": ["array", "null"],
+            "items": {
+                "type": "string"
+            },
+            "description": "List down all the pros mentioned in the review. If None, return None"
+        },
+
+        "cons": {
+            "type": ["array", "null"],
+            "items": {
+                "type": "string"
+            },
+            "description": "List down all the cons mentioned in the review. If None, return None"
+        },
+
+        "name": {
+            "type": ["string", "null"],
+            "description": "Write the name of the reviewer if mentioned in the review"
+        }
+    },
+    "required": ["key_themes", "summary", "sentiment"]
+}
 
 
 # LangChain uses the Review schema in the background to tell the LLM
@@ -33,37 +71,7 @@ class Review(BaseModel):
 # automatically attached to the model request; we don't manually write
 # them inside the prompt.   
 
-"""
-    # LangChain uses the Review Pydantic schema in the background
-# to tell the LLM what structure the output should follow.
-#
-# However, ChatHuggingFace's function-calling implementation
-# in this setup does NOT support Pydantic schemas.
-#
-# Therefore, the following line raises:
-#
-# NotImplementedError:
-# Pydantic schema is not supported for function calling
-#
-# To properly execute this same Pydantic structured-output code,
-# use an OpenAI chat model such as ChatOpenAI instead of
-# ChatHuggingFace.
-#
-# Example:
-#
-# from langchain_openai import ChatOpenAI
-#
-# model = ChatOpenAI(
-#     model="gpt-4o-mini",
-#     temperature=0
-# )
-#
-# structured_model = model.with_structured_output(Review)
-#
-# The rest of the code can remain the same.
-
-"""
-structured_model = model.with_structured_output(Review)
+structured_model = model.with_structured_output(json_schema)
 
 result = structured_model.invoke("""
     These headphones have both impressed and disappointed me. On the positive side, they are very lightweight and 
@@ -79,8 +87,10 @@ result = structured_model.invoke("""
     Reviewed by Aftabalam Makandar
 """)
 
-
+print(result)
+print("*" * 60)
 print(type(result))
-print(result.summary)
-print(result.sentiment)
-print(result.name)
+print("*" * 60)
+print(result["summary"])
+print(result["sentiment"])
+print(result["name"])
