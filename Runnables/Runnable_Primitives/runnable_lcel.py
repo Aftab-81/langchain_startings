@@ -9,6 +9,13 @@ from langchain_core.runnables import RunnableLambda
 
 load_dotenv()
 
+## LCER: LangChain Expression Language
+
+"""
+    Instead of using RunnableSequence class in order to create a chain use | operator.
+    | operator is jsut an alternative to RunnableSequence class.
+"""
+
 llm = HuggingFaceEndpoint(
     repo_id = "openai/gpt-oss-120b",
     task = "text-generation"
