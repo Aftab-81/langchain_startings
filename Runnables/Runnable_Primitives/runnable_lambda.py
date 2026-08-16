@@ -40,6 +40,6 @@ parallel_chain = RunnableParallel(
 
 final_chain = RunnableSequence(sequence_chain, parallel_chain)
 
-result = final_chain.invoke({"topic_of_joke": "ML Secrets"})
+result = final_chain.invoke({"topic_of_joke":"ML Secrets"})
 
 print(result)
