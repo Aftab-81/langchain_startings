@@ -43,3 +43,8 @@ parser = StrOutputParser()
 chain = template | model | parser
 
 print("Summary:\n", chain.invoke({"poem": docs[0].page_content}))
+
+# Note: This code might not work in this project environment because of some dependency issues. 
+# But the code is correct and executable in order to run this create another project with
+# only limited libraries installed. So that no dependency conflicts problem occur as it occurs
+# in this environment.
