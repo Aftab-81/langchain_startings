@@ -1,26 +1,38 @@
-langchain
-grandalf
-langchain-core
+# LangChain
 
-langchain-openai
-openai
+langchain==1.2.12
+langchain-core==1.2.18
+langchain-openai==1.1.10
+langchain-anthropic==1.4.4
+langchain-groq==1.1.2
+langchain-classic==1.0.0
+langchain-google-genai==4.2.1
+langchain-huggingface==1.2.1
 
-langchain-anthropic
-langchain-groq
-langchain-classic 
+# LangChain Community / Utilities
 
-langchain-google-genai
-google-generativeai
+grandalf==0.8
 
-langchain-huggingface
-transformers
-huggingface-hub
 
-pydantic
-pydantic[email]
+# Hugging Face
 
-python-dotenv
+transformers==4.57.6    
+huggingface-hub==0.36.2
 
-numpy
-scikit-learn
-pytorch
+# Data Validation
+
+pydantic==2.12.5
+pydantic[email]==2.12.5
+
+# Environment
+
+python-dotenv==1.2.1
+
+# Machine Learning
+
+numpy==2.2.6
+scikit-learn==1.7.2
+
+# PyTorch
+
+torch==2.7.1
