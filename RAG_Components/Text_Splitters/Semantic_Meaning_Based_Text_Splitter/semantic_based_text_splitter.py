@@ -29,7 +29,7 @@ security forces, and support from people who care about peace and safety.
 
 """
 
-chunks = splitter.create_documents([text])
+chunks = splitter.create_documents([text]) # create_documents() return a list of Documnet objects
 
 print(chunks[0])
 print("\n")
