@@ -1,5 +1,8 @@
-import langchain
-import langchain_openai  
+class Student:
 
-print(langchain.__version__)
-print(langchain_openai.__version__)
+    @classmethod
+    def show(cls):
+        print(type(cls))
+
+Student.show()
+print(type(Student))
